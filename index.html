@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petcare+ | Login</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="style.css">
+    
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    
-    <h1>Bem-vindo ao Petcare+</h1>
-    <p>Conectando ao banco de dados...</p>
-    
+
+    <div class="login-container">
+        <img src="logo.png" alt="Logo Petcare+">
+        
+        <h2>Acesse sua conta</h2>
+
+        <form id="login-form">
+            <input type="email" id="input-email" placeholder="Seu e-mail" required>
+            <input type="password" id="input-senha" placeholder="Sua senha" required>
+            
+            <button type="submit" id="btn-entrar">Entrar</button>
+            <button type="button" id="btn-cadastrar">Cadastrar</button>
+            
+            <p id="mensagem-erro"></p>
+        </form>
+    </div>
+
     <script src="config.js"></script>
     
     <script src="app.js"></script>

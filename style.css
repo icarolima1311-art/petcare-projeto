@@ -1,0 +1,70 @@
+/* --- style.css --- */
+
+body {
+    font-family: Arial, sans-serif;
+    /* Cor de fundo principal (o amarelo/laranja do seu design) */
+    background-color: #FDBA74; /* <-- TROQUE PELO SEU HEX DO CANVA */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container img {
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+.login-container h2 {
+    /* Cor do texto principal (o azul do seu logo) */
+    color: #3B82F6; /* <-- TROQUE PELO SEU HEX DO CANVA */
+    margin-bottom: 1.5rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Botão Principal (Entrar) */
+#btn-entrar {
+    background-color: #3B82F6; /* <-- TROQUE PELO SEU HEX DO CANVA */
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+/* Botão Secundário (Cadastrar) */
+#btn-cadastrar {
+    background-color: #E5E7EB; /* Um cinza claro */
+    color: #374151;
+}
+
+#mensagem-erro {
+    color: #EF4444; /* Vermelho para erros */
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: none; /* Começa escondido */
+}
