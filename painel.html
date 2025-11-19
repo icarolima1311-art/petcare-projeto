@@ -2,10 +2,194 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petcare+ | Meu Painel</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body>
-    <h1>Bem-vindo ao Painel!</h1>
-    <p>Você está logado.</p>
+<body class="painel-body">
+
+   <header class="painel-header">
+        <img src="logo.png" alt="Logo Petcare+">
+        
+        <div class="header-nav">
+            <a href="dicas.html" class="link-quem-somos">Dicas de Saúde</a> <a href="quem-somos.html" class="link-quem-somos">Quem Somos</a>
+            <button id="btn-sair">Sair</button>
+        </div>
+    </header>
+
+    <main class="painel-main">
+        <h2 id="titulo-painel">Painel de Pets</h2>
+        <p>Bem-vindo de volta! Aqui estão as ferramentas para cuidar do seu melhor amigo.</p>
+
+        <div class="painel-container">
+            
+            <div class="card card-assistente" id="card-assistente">
+                <i class="fa-solid fa-robot"></i> <h3>Assistente de Saúde</h3>
+                <p>Tire dúvidas sobre vacinas, alimentação e sintomas com o CHATBOT.</p>
+            </div>
+
+            <div class="card" id="card-calendario">
+                <i class="fa-solid fa-calendar-days"></i> <h3>Calendário de Vacinas</h3>
+                <p>Veja as próximas vacinas e receba lembretes.</p>
+            </div>
+
+            <div class="card" id="card-historico">
+                <i class="fa-solid fa-clipboard-list"></i> <h3>Histórico de Consultas</h3>
+                <p>Acesse o registro de todas as visitas ao veterinário.</p>
+            </div>
+            
+            <div class="card" id="card-lembretes"> 
+                <i class="fa-solid fa-bell"></i> <h3>Lembretes</h3>
+                <p>Adicione lembretes de banho, tosa ou medicação.</p>
+            </div>
+
+            <div class="card" id="card-peso"> 
+                <i class="fa-solid fa-weight-scale"></i> <h3>Controle de Peso</h3>
+                <p>Acompanhe a evolução do peso do seu pet.</p>
+            </div>
+
+            <div class="card" id="card-perfil-pet"> 
+                <i class="fa-solid fa-paw"></i> <h3>Perfil do Pet</h3>
+                <p>Gerencie as informações dos seus pets.</p>
+            </div>
+
+        </div>
+    </main>
+    
+    <div id="modal-pet-overlay" class="modal-overlay"> 
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="titulo-modal-pet">Adicionar Novo Pet</h2>
+            <form id="form-pet">
+                <input type="hidden" id="pet-id-edicao">
+                <label for="pet-nome">Nome do Pet:</label>
+                <input type="text" id="pet-nome" required>
+                <label for="pet-especie">Espécie:</label>
+                <input type="text" id="pet-especie" placeholder="Ex: Cachorro, Gato" required>
+                <label for="pet-raca">Raça:</label>
+                <input type="text" id="pet-raca" placeholder="Ex: Golden Retriever, Siamês">
+                <label for="pet-nascimento">Data de Nascimento:</label>
+                <input type="date" id="pet-nascimento">
+                <button type="submit" id="btn-salvar-pet">Salvar Pet</button>
+            </form>
+            <div id="lista-pets-existentes">
+                <h3>Meus Pets Cadastrados</h3>
+                <ul id="lista-pets-ul"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-vacinas-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="titulo-modal-vacinas">Calendário de Vacinas</h2>
+            <form id="form-vacina">
+                <label for="vacina-nome">Nome da Vacina:</label>
+                <input type="text" id="vacina-nome" placeholder="Ex: V10, Raiva" required>
+                <label for="vacina-data-aplicacao">Data de Aplicação:</label>
+                <input type="date" id="vacina-data-aplicacao" required>
+                <label for="vacina-data-vencimento">Data do Reforço (Vencimento):</label>
+                <input type="date" id="vacina-data-vencimento">
+                <button type="submit" id="btn-salvar-vacina">Salvar Vacina</button>
+            </form>
+            <div id="lista-vacinas-existentes">
+                <h3>Vacinas Registradas</h3>
+                <ul id="lista-vacinas-ul"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-historico-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="titulo-modal-historico">Histórico de Consultas</h2>
+            <form id="form-historico">
+                <label for="historico-tipo">Tipo de Evento:</label>
+                <input type="text" id="historico-tipo" placeholder="Ex: Consulta, Exame, Vermífugo" required>
+                <label for="historico-nome">Descrição / Nome:</label>
+                <input type="text" id="historico-nome" placeholder="Ex: Dr. Silva, Hemograma, Drontal" required>
+                <label for="historico-data">Data do Evento:</label>
+                <input type="date" id="historico-data" required>
+                <label for="historico-arquivo">Anexar Exame (PDF/Imagem):</label>
+                <input type="file" id="historico-arquivo">
+                <button type="submit" id="btn-salvar-historico">Salvar Registro</button>
+            </form>
+            <div id="lista-historico-existente">
+                <h3>Registros Anteriores</h3>
+                <ul id="lista-historico-ul"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-lembretes-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="titulo-modal-lembretes">Lembretes Personalizados</h2>
+            <form id="form-lembrete">
+                <label for="lembrete-titulo">Título do Lembrete:</label>
+                <input type="text" id="lembrete-titulo" placeholder="Ex: Banho e Tosa, Remédio, etc." required>
+                <label for="lembrete-data">Data e Hora do Lembrete:</label>
+                <input type="datetime-local" id="lembrete-data" required>
+                <button type="submit" id="btn-salvar-lembrete">Salvar Lembrete</button>
+            </form>
+            <div id="lista-lembretes-existentes">
+                <h3>Próximos Lembretes</h3>
+                <ul id="lista-lembretes-ul"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-peso-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="titulo-modal-peso">Controle de Peso</h2>
+            <form id="form-peso">
+                <label for="peso-kg">Peso (kg):</label>
+                <input type="number" step="0.01" id="peso-kg" placeholder="Ex: 12.5" required>
+                
+                <label for="peso-data">Data da Pesagem:</label>
+                <input type="date" id="peso-data" required>
+                
+                <button type="submit" id="btn-salvar-peso">Salvar Peso</button>
+            </form>
+            <div id="lista-peso-existentes">
+                <h3>Histórico de Peso</h3>
+                <ul id="lista-peso-ul"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-chat-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="chat-titulo">Assistente de Saúde</h2>
+            
+            <div id="chat-janela"></div>
+
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                <button type="submit" id="chat-btn-enviar">Enviar</button>
+            </form>
+            
+        </div>
+    </div>
+    
+    <div id="modal-visualizador-overlay" class="modal-overlay">
+        <div class="modal-content modal-visualizador"> 
+            <span class="btn-fechar-modal">&times;</span>
+            <h2 id="visualizador-titulo">Visualizador de Exame</h2>
+            <div id="visualizador-conteudo"></div>
+        </div>
+    </div>
+    
+    
+
+    <script src="config.js"></script>
+    <script src="painel.js"></script> 
 </body>
 </html>

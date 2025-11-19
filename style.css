@@ -1,70 +1,835 @@
-/* --- style.css --- */
+/* --- style.css (COMPLETO E ATUALIZADO COM PESO) --- */
 
+/* --- Estilos do Login (index.html) --- */
 body {
-    font-family: Arial, sans-serif;
-    /* Cor de fundo principal (o amarelo/laranja do seu design) */
-    background-color: #FDBA74; /* <-- TROQUE PELO SEU HEX DO CANVA */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* --- FUNDO CORRETO --- */
+    background-color: #ffae34; 
+    background-image: url('fundo-completo.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto; 
+    background-attachment: fixed; 
+    /* --- FIM DO FUNDO --- */
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 2rem; /* Adiciona padding para telas menores */
+    box-sizing: border-box;
 }
 
 .login-container {
     background-color: #FFFFFF;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 2.5rem; /* Mais espaçamento interno */
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    max-width: 100%;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .login-container img {
     width: 150px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .login-container h2 {
-    /* Cor do texto principal (o azul do seu logo) */
-    color: #3B82F6; /* <-- TROQUE PELO SEU HEX DO CANVA */
-    margin-bottom: 1.5rem;
+    /* (AZUL GENÉRICO) */
+    color: #2563EB; 
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
 }
 
 .login-form input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.9rem;
     margin-bottom: 1rem;
-    border: 1px solid #DDD;
-    border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    border: 1px solid #D1D5DB; /* Cinza mais suave */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-sizing: border-box; 
+    font-size: 1rem;
+}
+
+.login-form input:focus {
+    border-color: #2563EB; /* Borda azul ao focar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .login-form button {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.9rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600; /* Mais forte */
+    font-size: 1rem;
+    transition: background-color 0.2s;
 }
 
 /* Botão Principal (Entrar) */
 #btn-entrar {
-    background-color: #3B82F6; /* <-- TROQUE PELO SEU HEX DO CANVA */
+    /* (AZUL GENÉRICO) */
+    background-color: #2563EB; 
     color: white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+#btn-entrar:hover {
+    background-color: #1D4ED8; /* Azul mais escuro no hover */
 }
 
 /* Botão Secundário (Cadastrar) */
 #btn-cadastrar {
-    background-color: #E5E7EB; /* Um cinza claro */
-    color: #374151;
+    background-color: #FFFFFF;
+    /* (AZUL GENÉRICO) */
+    color: #2563EB;
+    border: 1px solid #D1D5DB; /* Borda cinza */
+}
+#btn-cadastrar:hover {
+    background-color: #F9FAFB; /* Cinza bem claro no hover */
 }
 
 #mensagem-erro {
-    color: #EF4444; /* Vermelho para erros */
+    color: #DC2626; /* Vermelho */
     margin-top: 1rem;
     font-size: 0.9rem;
-    display: none; /* Começa escondido */
+    display: none; 
+}
+
+/* ===============================================
+*/
+
+/* --- Estilos do Painel (painel.html) --- */
+
+.painel-body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* --- FUNDO CORRETO --- */
+    background-color: #ffae34; 
+    background-image: url('fundo-completo.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    /* --- FIM DO FUNDO --- */
+
+    display: block;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+.painel-header {
+    background-color: rgb(181, 141, 99);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* <-- HEADER FIXO */
+    top: 0;           /* <-- HEADER FIXO */
+    z-index: 100;     /* <-- HEADER FIXO */
+}
+
+.painel-header img {
+    width: 120px;
+}
+
+#btn-sair {
+    /* (VERMELHO) */
+    background-color: #DC2626; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+#btn-sair:hover {
+    background-color: #B91C1C;
+}
+
+.painel-main {
+    padding: 10rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    
+    /* (FIX) Adiciona espaço extra no final, antes da arte */
+    padding-bottom: 250px;
+}
+
+.painel-main h2 {
+    /* (TEXTO BRANCO) */
+    color: #FFFFFF; 
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.painel-main p {
+    /* (TEXTO BRANCO) */
+    color: #FFFFFF; 
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    opacity: 0.9; 
+}
+
+.painel-container {
+    display: grid;
+    /* (MUDANÇA!) Agora 3 colunas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card i {
+    font-size: 2.5rem; 
+    margin-bottom: 1rem;
+    /* (AZUL GENÉRICO) */
+    color: #724923; 
+}
+
+.card-assistente i {
+    color: white;
+}
+
+
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: #111827; /* Preto suave */
+    font-size: 1.25rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #4B5563; /* Cinza médio */
+    margin-bottom: 0;
+}
+
+.card-assistente {
+    /* (VERDE GENÉRICO) */
+    background-color: #121312; 
+    /* (MUDANÇA!) Ocupa as 3 colunas */
+    grid-column: 1 / 4; 
+    color: white;
+}
+
+.card-assistente:hover {
+    background-color: #724923; /* Verde mais escuro no hover */
+}
+
+.card-assistente h3,
+.card-assistente p {
+    color: white;
+}
+
+
+/* --- Estilos dos Modais (Pop-ups) --- */
+
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.modal-overlay.ativo {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 500px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    /* (AZUL GENÉRICO) */
+    color: #2563EB; 
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+/* O botão "X" de fechar (CLASSE) */
+.btn-fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: #9CA3AF; /* Cinza claro */
+    cursor: pointer;
+    line-height: 1;
+}
+.btn-fechar-modal:hover {
+    color: #374151; /* Cinza escuro */
+}
+
+/* Estilos do formulário dentro do modal (COMPARTILHADO) */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content form label {
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600; /* Mais forte */
+    color: #374151;
+}
+/* Primeiro label sem margem no topo */
+.modal-content form label:first-of-type {
+    margin-top: 0;
+}
+
+.modal-content form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1rem;
+}
+.modal-content form input:focus {
+    border-color: #2563EB; /* Borda azul ao focar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* (NOVO) Estilo para o input de ARQUIVO */
+.modal-content form input[type="file"] {
+    padding: 0;
+    border: none;
+}
+.modal-content form input[type="file"]::file-selector-button {
+    background-color: #E5E7EB;
+    color: #374151;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: background-color 0.2s;
+}
+.modal-content form input[type="file"]::file-selector-button:hover {
+    background-color: #D1D5DB;
+}
+
+/* Botões de Salvar nos Modais */
+#form-pet button,
+#form-vacina button,
+#form-historico button,
+#form-lembrete button,
+#form-peso button { /* (NOVO) */
+    margin-top: 1.5rem;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+/* Botão de Salvar Pet */
+#form-pet button {
+    /* (VERDE GENÉRICO) */
+    background-color: #059669; 
+}
+#form-pet button:hover {
+    background-color: #047857;
+}
+
+/* Botão de Salvar Vacina e Histórico */
+#form-vacina button,
+#form-historico button,
+#form-peso button { /* (NOVO - PESO AZUL) */
+    /* (AZUL GENÉRICO) */
+    background-color: #2563EB; 
+}
+#form-vacina button:hover,
+#form-historico button:hover,
+#form-peso button:hover {
+    background-color: #1D4ED8;
+}
+
+/* Botão de Salvar Lembrete */
+#form-lembrete button {
+    background-color: #F59E0B; /* Laranja/Amarelo */
+}
+#form-lembrete button:hover {
+    background-color: #D97706;
+}
+
+
+/* Estilos das listas de itens já cadastrados */
+#lista-pets-existentes, 
+#lista-vacinas-existentes, 
+#lista-historico-existente,
+#lista-lembretes-existentes,
+#lista-peso-existentes { /* (NOVO) */
+    margin-top: 2rem;
+    border-top: 1px solid #EEE;
+    padding-top: 1.5rem;
+}
+#lista-pets-existentes h3,
+#lista-vacinas-existentes h3,
+#lista-historico-existente h3,
+#lista-lembretes-existentes h3,
+#lista-peso-existentes h3 { /* (NOVO) */
+    margin-top: 0;
+    color: #111827;
+}
+
+#lista-pets-ul, 
+#lista-vacinas-ul, 
+#lista-historico-ul,
+#lista-lembretes-ul,
+#lista-peso-ul { /* (NOVO) */
+    list-style: none;
+    padding-left: 0;
+}
+
+/* (ATUALIZADO) Estilo do item da lista */
+.lista-pets-item, 
+#lista-vacinas-ul li, 
+#lista-historico-ul li,
+#lista-lembretes-ul li,
+#lista-peso-ul li { /* (NOVO) */
+    padding: 0.75rem 1rem;
+    background-color: #f9fafb;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* (NOVO) Estilo para o nome clicável do pet */
+.pet-nome-clicavel {
+    cursor: pointer;
+    transition: color 0.2s;
+    /* (NOVO) Faz o nome ocupar o espaço */
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+.pet-nome-clicavel:hover {
+    color: #2563EB; /* Azul no hover */
+}
+
+/* (NOVO) Estilo para destacar o pet ativo */
+.lista-pets-item.ativo {
+    background-color: #DBEAFE; /* Fundo azul claro */
+    border: 1px solid #93C5FD;
+}
+.lista-pets-item.ativo .pet-nome-clicavel {
+    color: #1D4ED8; /* Azul escuro */
+    font-weight: 700;
+}
+
+
+/* (NOVO) Estilo da lixeira e do LÁPIS */
+.lixeira-pet, .lixeira-lembrete, .lapis-pet-editar, .lixeira-peso { /* (NOVO) */
+    color: #9CA3AF; /* Cinza */
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 5px; 
+    margin-left: 0.25rem; /* Espaço entre os ícones */
+}
+.lixeira-pet:hover, .lixeira-lembrete:hover, .lixeira-peso:hover {
+    color: #DC2626; /* Vermelho */
+}
+/* (NOVO) */
+.lapis-pet-editar:hover {
+    color: #2563EB; /* Azul */
+}
+
+/* Estilo para o span de data (COMPARTILHADO) */
+#lista-vacinas-ul li span,
+#lista-historico-ul li span {
+    font-size: 0.9rem;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+/* (NOVO) Estilo para a lista de Lembretes E PESO */
+#lista-lembretes-ul li,
+#lista-peso-ul li { /* (NOVO) */
+    justify-content: flex-start; 
+    align-items: center;
+}
+.lembrete-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+.lembrete-info strong {
+    font-weight: 600;
+    color: #111827;
+}
+.lembrete-info span {
+    font-size: 0.9rem;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+/* (NOVO) Estilo para a lista de Histórico (com link de exame) */
+.historico-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.historico-info strong {
+    font-weight: 600;
+    color: #111827;
+}
+.historico-info span {
+    font-size: 0.9rem;
+    color: #6B7280;
+    font-weight: 400;
+}
+.link-exame {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2563EB; /* Azul genérico */
+    text-decoration: none;
+    margin-left: 1rem; /* Espaço */
+}
+.link-exame:hover {
+    text-decoration: underline;
+}
+
+/* ===============================================
+*/
+
+/* --- Estilos do Modal (Chatbot) --- */
+
+#chat-janela {
+    width: 100%;
+    height: 300px;
+    background-color: #f8f9fa;
+    border: 1px solid #EEE;
+    border-radius: 8px; /* Bordas mais arredondadas */
+    padding: 1rem;
+    overflow-y: auto; 
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+/* Estilo das mensagens do chat */
+.chat-msg {
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px; /* Mensagens mais arredondadas */
+    max-width: 80%;
+    line-height: 1.4;
+}
+.chat-msg-bot {
+    background-color: #E5E7EB;
+    color: #333;
+    float: left;
+    clear: both;
+}
+.chat-msg-user {
+    /* (AZUL GENÉRICO) */
+    background-color: #2563EB; 
+    color: white;
+    float: right;
+    clear: both;
+}
+
+/* Estilo da seleção de modo (removido, mas deixei o estilo do form) */
+#chat-modos {
+    display: none; /* Escondemos isso na última versão */
+}
+
+/* Estilo do formulário de chat */
+#chat-form {
+    margin-top: 1rem;
+    display: flex;
+}
+#chat-input {
+    flex-grow: 1; 
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px 0 0 8px;
+    font-size: 1rem;
+}
+#chat-input:focus {
+    border-color: #2563EB; /* Borda azul ao focar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    z-index: 1;
+}
+#chat-btn-enviar {
+    /* (AZUL GENÉRICO) */
+    background-color: #2563EB; 
+    color: white;
+    border: none;
+    padding: 0 1.25rem;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+#chat-btn-enviar:hover {
+    background-color: #1D4ED8;
+}
+
+/* --- Estilos do Rodapé (Arte dos Pets) --- */
+
+.footer-art {
+    position: fixed; /* Fica fixo na tela */
+    bottom: 0;       /* Colado na parte de baixo */
+    left: 0;         /* Colado na esquerda */
+    width: 100%;     /* Ocupa a largura toda */
+    
+    /* Força a imagem a ter no MÁXIMO 250px de altura */
+    height: 250px; 
+    
+    /* 'contain' garante que a IMAGEM INTEIRA caiba na caixa, 
+       sem cortar, mantendo a proporção. */
+    object-fit: contain; 
+    
+    /* Fica atrás do conteúdo (z-index: 10) 
+       mas na frente do body (z-index: auto) */
+    z-index: 5; 
+}
+
+/* ===============================================
+*/
+
+/* --- Estilos do Modal (Visualizador) --- (NOVO) */
+
+.modal-visualizador {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh; /* 90% da altura da tela */
+}
+
+#visualizador-conteudo {
+    /* (NOVO) Ocupa o espaço restante */
+    height: calc(90vh - 120px); /* Altura total - padding e título */
+    width: 100%;
+    border: 1px solid #EEE;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+#visualizador-conteudo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem caiba sem distorcer */
+}
+
+#visualizador-conteudo embed {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- ESTILOS DA PÁGINA QUEM SOMOS & NOVO HEADER --- */
+
+/* Ajuste do Header para alinhar o link e o botão */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre "Quem Somos" e "Sair" */
+}
+
+.link-quem-somos {
+    text-decoration: none;
+    color: #000000; /* Azul Principal */
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.link-quem-somos:hover {
+    color: #1E3A8A; /* Azul mais escuro */
+    text-decoration: underline;
+}
+
+/* Botão Voltar (na página Quem Somos) */
+.btn-voltar {
+    text-decoration: none;
+    background-color: #2563EB;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.btn-voltar:hover {
+    background-color: #1D4ED8;
+}
+
+/* Container do Texto */
+.quem-somos-container {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+    text-align: center; /* Centraliza tudo */
+}
+
+.quem-somos-container h2 {
+    color: #010714;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.quem-somos-container p {
+    color: #4B5563; /* Cinza escuro para leitura */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: left; /* Texto justificado/esquerda para leitura */
+}
+
+.divisoria {
+    height: 2px;
+    background-color: #E5E7EB;
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.subtitulo-time {
+    text-align: center !important;
+    color: #6B7280 !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Grid do Time */
+.grid-time {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Em telas menores (celular), vira 2 colunas */
+@media (max-width: 768px) {
+    .grid-time {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.membro-time {
+    background-color: #F3F4F6;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+.membro-time:hover {
+    transform: translateY(-5px);
+    background-color: #E5E7EB;
+}
+
+.membro-time i {
+    font-size: 2.5rem;
+    color: #059669; /* Verde Principal */
+    margin-bottom: 1rem;
+}
+
+.membro-time h3 {
+    font-size: 1.1rem;
+    color: #111827;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.membro-time span {
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+/* --- ESTILOS DA PÁGINA DE DICAS --- */
+
+.grid-dicas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .grid-dicas {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-dica {
+    background-color: #F9FAFB; /* Fundo cinza bem claro */
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left; /* Texto alinhado à esquerda */
+    transition: transform 0.2s;
+}
+
+.card-dica:hover {
+    transform: translateY(-5px);
+    border-color: #2563EB; /* Borda azul ao passar o mouse */
+}
+
+.card-dica i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card-dica h3 {
+    color: #111827;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card-dica p {
+    color: #4B5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
 }
