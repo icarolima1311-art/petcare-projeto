@@ -1144,3 +1144,93 @@ btnsFecharModal.forEach(btn => {
         }
     });
 });
+
+// --- LÓGICA DO CHATBOT ---
+
+// Intents e respostas do chatbot
+const chatbotIntents = [
+    {
+        intent: "saudacao",
+        examples: ["oi", "olá", "e aí", "bom dia"],
+        response: "Olá! Como posso ajudar você e seu pet hoje? 😊"
+    },
+    {
+        intent: "vacina",
+        examples: ["vacina", "calendário de vacinas", "quando vacinar"],
+        response: (petName) => `A próxima vacina do ${petName} está agendada para [data]. Verifique o calendário para mais detalhes.`
+    },
+    {
+        intent: "brincadeira",
+        examples: ["piada", "conta uma piada", "fala algo engraçado"],
+        response: "Por que o cachorro não gosta de computador? Porque ele prefere um OSso! 🦴😂"
+    },
+    {
+        intent: "alimentacao",
+        examples: ["comida", "ração", "o que meu pet pode comer"],
+        response: "Evite chocolate, cebola e uva! Para dicas personalizadas, consulte o histórico de alimentação do seu pet."
+    },
+    {
+        intent: "despedida",
+        examples: ["tchau", "adeus", "até logo"],
+        response: "Até logo! Cuide bem do seu pet! 🐾"
+    }
+];
+
+// Função para processar a mensagem do usuário
+function processUserMessage(message, petName) {
+    const normalizedMessage = message.toLowerCase();
+    
+    // Busca a intent correspondente
+    const intent = chatbotIntents.find(intent =>
+        intent.examples.some(example => normalizedMessage.includes(example))
+    );
+    
+    if (intent) {
+        return typeof intent.response === 'function' ? intent.response(petName) : intent.response;
+    } else {
+        return "Não entendi. Pode repetir ou tentar perguntar de outra forma?";
+    }
+}
+
+// Função para buscar dados de vacinas no Supabase
+async function fetchPetVaccineSchedule(petId) {
+    try {
+        const { data, error } = await supabaseClient
+            .from('vacinas')
+            .select('data_proxima')
+            .eq('pet_id', petId)
+            .single();
+
+        if (error) throw error;
+        return data.data_proxima;
+    } catch (error) {
+        console.error("Erro ao buscar vacinas:", error);
+        return "[data não disponível]";
+    }
+}
+
+// Função para exibir a resposta do chatbot
+function displayChatbotResponse(response) {
+    const chatbotResponseDiv = document.getElementById('chatbot-responses');
+    if (chatbotResponseDiv) {
+        chatbotResponseDiv.innerHTML += `<p><strong>Chatbot:</strong> ${response}</p>`;
+    }
+}
+
+// Evento para processar a entrada do usuário
+document.getElementById('chatbot-input')?.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+        const message = e.target.value;
+        const petName = "Ceni"; // Substitua pela variável dinâmica do seu pet
+        let response = processUserMessage(message, petName);
+
+        // Se a resposta exigir dados do Supabase
+        if (message.toLowerCase().includes("vacina")) {
+            const nextVaccine = await fetchPetVaccineSchedule("ID_DO_PET"); // Substitua pelo ID real
+            response = response.replace("[data]", nextVaccine);
+        }
+
+        displayChatbotResponse(response);
+        e.target.value = "";
+    }
+});
