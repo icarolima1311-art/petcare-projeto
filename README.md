@@ -112,3 +112,74 @@ Projeto desenvolvido para a Feira de Tecnologia.
 ## 📄 Licença
 
 Este projeto é de uso acadêmico.
+
+## Prompt utilizado para auxilio de criação do Projeto 
+
+
+Role (Papel): Atue como um Desenvolvedor Web Fullstack Sênior, especialista em Front-end (Vanilla JS) e arquitetura Serverless (BaaS).
+
+Contexto do Projeto: Desenvolver uma aplicação web chamada Petcare+, focada na gestão proativa da saúde de animais de estimação. O problema a ser resolvido é a descentralização de informações (carteirinhas de papel perdidas). A solução deve centralizar histórico, vacinas e rotina em um dashboard digital acessível.
+
+Stack Tecnológica:
+
+Front-end: HTML Semântico, CSS (Grid/Flexbox), JavaScript (ES6+ Puro).
+
+Back-end/Banco de Dados: Supabase (PostgreSQL) para Autenticação, Banco de Dados e Storage (Armazenamento de arquivos).
+
+Bibliotecas: FontAwesome (ícones).
+
+Requisitos Funcionais (O que o sistema deve fazer):
+
+Autenticação Segura:
+
+Tela de Login e Cadastro integrada ao Supabase Auth (Email/Senha).
+
+Proteção de rotas (redirecionar para login se não houver sessão).
+
+Gerenciamento de Pets (CRUD Completo):
+
+Modal para cadastrar múltiplos pets (Nome, Espécie, Raça, Data de Nascimento).
+
+Seleção de Contexto: Ao clicar no nome do pet, o painel deve filtrar todos os dados apenas para aquele animal.
+
+Edição e Exclusão: Permitir editar dados do perfil e excluir o pet (com confirmação).
+
+Módulos de Saúde (Painel de Controle): O dashboard deve conter 7 Cards interativos:
+
+Calendário de Vacinas: Listagem com data de aplicação e vencimento.
+
+Histórico Médico + Upload: Registro de consultas com campo para upload de exames (PDF/Imagem) no Supabase Storage. Incluir um Visualizador de Arquivos (modal) para ver o exame sem baixar.
+
+Lembretes: CRUD de alertas personalizados (banho, tosa, remédio) com data/hora.
+
+Controle de Peso: Tabela para registrar e monitorar a evolução do peso (kg) e data.
+
+Diário de Nutrição: Registro de alimentação, trocas de ração e observações de alergias.
+
+Perfil do Pet: Atalho para editar os dados cadastrais.
+
+Assistente de Saúde (Chatbot):
+
+Implementar um Chatbot baseado em regras (JavaScript local) com uma knowledgeBase robusta.
+
+Deve responder a dúvidas sobre: Sintomas (vômito, febre), Alimentos Tóxicos (uva, chocolate), Doenças (cinomose, parvovirose) e Cuidados Gerais.
+
+O bot deve ter "memória de curto prazo" para entender contextos simples (ex: se o usuário diz "diarreia", o bot pergunta o tipo, e entende a resposta seguinte).
+
+Páginas Institucionais:
+
+"Quem Somos": Página apresentando a missão ("Do cuidado reativo ao proativo") e o time de desenvolvedores.
+
+"Dicas de Saúde": Página com cards informativos sobre cuidados essenciais.
+
+Menu de navegação fixo (Sticky Header) para acesso rápido.
+
+Requisitos Não-Funcionais (UI/UX):
+
+Design System: Identidade visual amigável com cor primária Laranja (#ffae34), acentos em Azul e Verde, e fundo com textura (patinhas).
+
+Responsividade: Layout deve funcionar em Desktop (Grid de 3 colunas) e Mobile (coluna única).
+
+Feedback: Modais (pop-ups) para todas as interações de inserção de dados.
+
+Entregáveis Esperados: Código fonte completo separado em: index.html, app.js (login), painel.html, painel.js (lógica principal), style.css, quem-somos.html, dicas.html e os scripts SQL para configuração das tabelas e políticas de segurança (RLS) no Supabase.
