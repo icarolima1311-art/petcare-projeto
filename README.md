@@ -92,6 +92,11 @@ https://petcare-projeto.vercel.app/
 
 https://github.com/icarolima1311-art/petcare-projeto
 
+## pitch de apresentação 
+
+https://youtu.be/nAHBpcFjHI4
+
+
 ## 👥 Equipe de Desenvolvimento
 
 Projeto desenvolvido para a Feira de Tecnologia.
