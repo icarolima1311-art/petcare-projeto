@@ -88,6 +88,10 @@ O sistema conta com um **Painel de Controle Dinâmico** que se adapta ao pet sel
 ## Projeto On
 https://petcare-projeto.vercel.app/
 
+## Repositorios GITHUB
+
+https://github.com/icarolima1311-art/petcare-projeto
+
 ## 👥 Equipe de Desenvolvimento
 
 Projeto desenvolvido para a Feira de Tecnologia.
